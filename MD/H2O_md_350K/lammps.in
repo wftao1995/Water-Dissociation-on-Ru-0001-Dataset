@@ -1,0 +1,53 @@
+# Simple lammps run script
+
+##----------Varaibles----------
+variable Tbeg   equal 5
+variable Tend   equal 350
+variable ts     equal 0.0005
+variable tdamp  equal 0.1
+variable steps1  equal 10000
+variable steps2  equal 200000000
+variable sedv   equal randomint(0)
+
+##-----------Global------------
+comm_style   brick
+processors   8 12 1
+
+##-----------Lattice-----------
+units           metal
+boundary        p p p
+read_data       lat.lmp
+#read_restart    maintain.restart
+
+region surface block INF INF INF INF 5.5 INF 
+group surface region surface
+
+##-----------Potential---------
+pair_style mlip/opt potential.mtp 0 1 2
+pair_coeff * *
+
+##------------Run--------------
+timestep ${ts}
+velocity surface create ${Tbeg} ${sedv}
+
+thermo 100
+log log-heating.lammps
+reset_timestep 0
+compute 1 surface temp
+fix 1 surface nvt temp ${Tbeg} ${Tend} ${tdamp}
+dump 1 all custom 1000 heating.lammpstrj id type x y z fx fy fz 
+thermo_style custom step time c_1 pe etotal press
+run ${steps1}
+unfix 1
+undump 1
+reset_timestep 0
+
+log log-maintain.lammps
+fix 1 surface nvt temp ${Tend} ${Tend} ${tdamp}
+dump 1 all custom 1000 maintain.lammpstrj id type x y z fx fy fz
+thermo_style custom step time c_1 pe etotal press
+restart 1000 main1.restart main2.restart
+run ${steps2}
+unfix 1
+undump 1
+

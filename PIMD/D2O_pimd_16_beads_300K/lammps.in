@@ -1,0 +1,47 @@
+# Simple lammps run scrip
+
+##----------Varaibles----------
+variable Tbeg   equal 5
+variable Tend   equal 300
+variable ts     equal 0.0005
+variable tdamp  equal 0.1
+variable steps  equal 120000000
+variable sedv   equal randomint(0)
+variable ibead uloop 16 pad
+
+##-----------Global------------
+comm_style   brick
+processors   3 4 1
+
+##-----------Lattice-----------
+units           metal
+boundary        p p p
+atom_modify     map yes
+read_data       lat.lmp
+# read_restart    maintain.restart
+
+region surface block INF INF INF INF 5.5 INF 
+group surface region surface
+
+##-----------Potential---------
+pair_style mlip/opt potential.mtp 0 1 2
+pair_coeff * *
+
+##------------Run--------------
+timestep ${ts}
+velocity surface create ${Tend} ${sedv} dist gaussian
+
+thermo 100
+compute 1 surface temp
+
+log log-maintain.lammps.${ibead}
+fix 1 all pimd/langevin ensemble nvt method nmpimd integrator obabo fmmode physical temp ${Tend} thermostat PILE_L 43432 fixcom yes 
+dump 1 all custom 1000 maintain_${ibead}.lammpstrj id type x y z
+thermo_style custom step time temp pe etotal press f_1[1] f_1[2] f_1[3] f_1[4] 
+thermo_modify  colname f_1[1] kenom colname f_1[2] spenom colname f_1[3] pe_bead colname f_1[4] etot_beads 
+restart 1000 main1.${ibead}.restart main2.${ibead}.restart
+
+run ${steps}
+unfix 1
+undump 1
+

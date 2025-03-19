@@ -16,12 +16,37 @@ The training/validation datasets are provided in the extended XYZ format.
 
 ## Files
 
+### Training and Validation Data
 - **train.xyz**: Training dataset.
 - **valid.xyz**: Validation dataset.
+
+### Machine-Learned Potential
 - **potential.mtp**: Machine-learned moment tensor potential file with the following atom type mappings:
   - Type 0: Hydrogen (H)
   - Type 1: Oxygen (O)
   - Type 2: Ruthenium (Ru)
+
+### Molecular Dynamics Simulations
+- **MD**: Directory containing initial structures and LAMMPS input scripts for MD simulations at different temperatures:
+  - **H2O_md_300K**: MD simulations under 300K.
+  - **H2O_md_350K**: MD simulations under 350K.
+  - **H2O_MD_400K**: MD simulations under 400K.
+
+  Each folder contains:
+  - **lammps.in**: LAMMPS input script. 
+  - **lat.lmp**: Initial structure for MD simulation.
+  - **last.lammpstrj**: Structure snapshot of the last frame of the MD simulation. 
+
+### Path-Integral Molecular Dynamics Simulations
+- **PIMD**: Directory containing initial structures and LAMMPS input scripts for PIMD simulations:
+  - **D2O_pimd_16_beads_300K**: PIMD simulations under 300K for D2O/Ru(0001) system. 
+  - **H2O_pimd_16_beads_300K-{1,2,3}**: PIMD simulations under 300K for H2O/Ru(0001) system, with different random seeds.
+  - **H2O_pimd_32_beads_300K**: PIMD simulations under 300K with 32 beads.
+
+  Each folder contains:
+  - **lammps.in**: LAMMPS input script. 
+  - **lat.lmp**: Initial structure for MD simulation.
+  - **last_\*.lammpstrj**: Structure snapshots of the last frame of the PIMD simulation for each bead (16 beads for 16-bead simulations, 32 beads for 32-bead simulations).
 
 ## License
 
@@ -34,4 +59,3 @@ For any questions or issues regarding this dataset, please contact the correspon
 ---
 
 We hope this dataset will be useful for your research. Thank you for your interest!
-
