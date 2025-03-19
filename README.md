@@ -30,7 +30,7 @@ The training/validation datasets are provided in the extended XYZ format.
 - **MD**: Directory containing initial structures and LAMMPS input scripts for MD simulations at different temperatures:
   - **H2O_md_300K**: MD simulations under 300K.
   - **H2O_md_350K**: MD simulations under 350K.
-  - **H2O_MD_400K**: MD simulations under 400K.
+  - **H2O_md_400K**: MD simulations under 400K.
 
   Each folder contains:
   - **lammps.in**: LAMMPS input script. 
