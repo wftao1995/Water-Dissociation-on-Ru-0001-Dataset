@@ -26,6 +26,11 @@ The training/validation datasets are provided in the extended XYZ format.
   - Type 1: Oxygen (O)
   - Type 2: Ruthenium (Ru)
 
+### Adsorption Energy
+- **Eads**: Directory containing adsorption energies predicted by DFT and MLP for various configurations shown in Figure 1.
+  - **Configuration.*.vasp**: Structures of each adsorption configuration corresponding to configuration index in Figure 1.
+  - **Eads.dat**: Adsorption energies for each configuration. 
+
 ### Molecular Dynamics Simulations
 - **MD**: Directory containing initial structures and LAMMPS input scripts for MD simulations at different temperatures:
   - **H2O_md_300K**: MD simulations under 300K.
