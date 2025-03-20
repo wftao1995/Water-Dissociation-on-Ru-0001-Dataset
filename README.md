@@ -7,7 +7,7 @@ This repository provides the LAMMPS input script for molecular dynamics and path
       title={Quantum Delocalization Enables Water Dissociation on {{Ru}}(0001)}, 
       author={Yu Cao and Jiantao Wang and Mingfeng Liu and Yan Liu and Hui Ma and Cesare Franchini and Yan Sun and Georg Kresse and Xing-Qiu Chen and Peitao Liu},
       year={2024},
-      journal={arXiv.2412.00484},
+      journal={arXiv:2412.00484},
       url={https://arxiv.org/abs/2412.00484}, 
 }
 ```
