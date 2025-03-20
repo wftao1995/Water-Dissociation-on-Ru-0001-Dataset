@@ -6,7 +6,7 @@ variable Tend   equal 300
 variable ts     equal 0.0005
 variable tdamp  equal 0.1
 variable steps1  equal 10000
-variable steps2  equal 1000000000
+variable steps2  equal 2000000000
 variable sedv   equal randomint(0)
 
 ##-----------Global------------

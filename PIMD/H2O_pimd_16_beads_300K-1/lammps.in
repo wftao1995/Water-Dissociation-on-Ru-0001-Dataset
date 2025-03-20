@@ -5,7 +5,7 @@ variable Tbeg   equal 5
 variable Tend   equal 300
 variable ts     equal 0.0005
 variable tdamp  equal 0.1
-variable steps  equal 60000000
+variable steps  equal 120000000
 variable sedv   equal randomint(0)
 variable ibead uloop 16 pad
 
