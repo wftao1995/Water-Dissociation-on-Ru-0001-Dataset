@@ -3,12 +3,19 @@
 This repository provides the LAMMPS input script for molecular dynamics and path-integral molecular dynamics simulations, along with the training and validation datasets used for constructing the machine-learned potential in the following paper:
 
 ```bibtex
-@article{arXiv.2412.00484,
-      title={Quantum Delocalization Enables Water Dissociation on {{Ru}}(0001)}, 
-      author={Yu Cao and Jiantao Wang and Mingfeng Liu and Yan Liu and Hui Ma and Cesare Franchini and Yan Sun and Georg Kresse and Xing-Qiu Chen and Peitao Liu},
-      year={2024},
-      journal={arXiv:2412.00484},
-      url={https://arxiv.org/abs/2412.00484}, 
+@article{PhysRevLett.134.178001,
+  title = {Quantum Delocalization Enables Water Dissociation on Ru(0001)},
+  author = {Cao, Yu and Wang, Jiantao and Liu, Mingfeng and Liu, Yan and Ma, Hui and Franchini, Cesare and Sun, Yan and Kresse, Georg and Chen, Xing-Qiu and Liu, Peitao},
+  journal = {Phys. Rev. Lett.},
+  volume = {134},
+  issue = {17},
+  pages = {178001},
+  numpages = {8},
+  year = {2025},
+  month = {Apr},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevLett.134.178001},
+  url = {https://link.aps.org/doi/10.1103/PhysRevLett.134.178001}
 }
 ```
 
